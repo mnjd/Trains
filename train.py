@@ -4,7 +4,38 @@ class Railroad:
 
     def __init__(self):
         self.routes_graph={}
+    
+    def build(self, input_towns_string):
+        input_towns_list = input_towns_string.split(", ")
+        for e in input_towns_list:
+            self.construct_graph(e)
 
+    def construct_graph(self, input_towns_list):
+        railroad = Railroad()
+        if input_towns_list[0] not in self.routes_graph:
+            self.routes_graph[input_towns_list[0]] = {}
+        if input_towns_list[1]:
+            self.routes_graph[input_towns_list[0]][input_towns_list[1]] = {}
+        if input_towns_list[2]:
+            self.routes_graph[input_towns_list[0]][input_towns_list[1]] = int(input_towns_list[2])
+
+    def calc_distance(self, route_string):
+        route_string = route_string.split("-")
+        l = 0
+        distance = 0
+        while l != len(route_string) - 1:
+            try:
+                if route_string[l+1] in self.routes_graph[route_string[l]]:
+                    distance += self.routes_graph[route_string[l]][route_string[l+1]]
+                else:
+                    distance = str('NO SUCH ROUTE')
+                l += 1
+            except KeyError:
+                distance = str('NO SUCH ROUTE')
+                l += 1
+        print(distance)
+
+    '''
     def check_input_string(self, string_distance):
         input_towns_list = string_distance.split(", ")
         length_input = len(input_towns_list)
@@ -28,32 +59,14 @@ class Railroad:
                 else:
                     raise Exception('first and second characters should be letters and third a number')
         return input_towns_list
-
-    def construct_graph(self, string_distance):
-        railroad = Railroad()
-        input_towns_list = railroad.check_input_string(input_towns_string)
-        i = 0
-        routes_graph = {}
-        for l in range(0, len(input_towns_list)):
-            for char in input_towns_list[l]:
-                i += 1
-                if i == 1:
-                    char1 = char
-                    if char1 not in routes_graph:
-                        routes_graph[char1] = {}
-                if i == 2:
-                    char2 = char
-                    routes_graph[char1][char2] = {}
-                if i == 3:
-                    char3 = char
-                    routes_graph[char1][char2] = int(char3)
-            i = 0
-        return routes_graph
+    '''
     
 railroad = Railroad()
-routes_graph = railroad.construct_graph(input_towns_string)
-print(routes_graph)
-
-#print(l)
+routes_graph = railroad.build(input_towns_string)
+route = railroad.calc_distance('A-B-C')
+route = railroad.calc_distance('A-D')
+route = railroad.calc_distance('A-D-C')
+route = railroad.calc_distance('A-E-B-C-D')
+route = railroad.calc_distance('A-Z-D')
 
 
