@@ -2,7 +2,11 @@
 Training projects of AgilityFactory: trains
 
 ## Getting Started
-Download train.py and execute it: python train.py
+Download train.py and execute it: 
+
+```
+python train.py
+```
 
 ### Prerequisites
 python3.6 (2.7 should be fine)
