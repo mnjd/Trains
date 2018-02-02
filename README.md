@@ -7,7 +7,9 @@ To run tests, download test.py and execute: py.test test.py
 
 ### Prerequisites
 python3.6 (2.7 should be fine)
+
 pytest 
+
 '''
 pip install pytest
 '''
