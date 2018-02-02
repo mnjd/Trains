@@ -15,4 +15,9 @@ pytest
 pip install pytest
 ```
 
+### Running the tests
+To run tests, download test.py and execute: 
 
+```
+py.test test.py
+```
