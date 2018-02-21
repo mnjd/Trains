@@ -12,6 +12,7 @@ class GraphicalInterface:
         self.bottomframe = Frame(master)
         self.bottomframe.pack(side = BOTTOM)
         self.buttons(master)
+        self.string = ''
 
     def buttons(self, master):
         calc_distance_button = Button(self.topframe, text="Distance between 2 towns", command=self.calc_distance_window)
@@ -27,8 +28,8 @@ class GraphicalInterface:
         number_routes_length_button.pack(side = BOTTOM)
 
     def entry_user(self):
-        string  = self.entry.get()
-        print(string)
+        self.string  = self.entry.get()
+        print(self.string)
 
     def two_commands(self):
         self.entry_user()
@@ -70,7 +71,7 @@ class GraphicalInterface:
         button = Button(self.window, text='OK', command=self.two_commands)
         button.pack(side = BOTTOM)
 
-
-#root = Tk()
-#gui = GraphicalInterface(root)
-#root.mainloop()
+if __name__ == "__main__":
+    root = Tk()
+    gui = GraphicalInterface(root)
+    root.mainloop()
