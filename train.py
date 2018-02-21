@@ -1,3 +1,6 @@
+from gui import GraphicalInterface
+from tkinter import *
+
 input_towns_string = 'AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7'
 
 class Railroad:
@@ -164,6 +167,9 @@ class Railroad:
         return len(newlist)
 
 railroad = Railroad()
+root = Tk()
+gui = GraphicalInterface(root)
+root.mainloop()
 #print(railroad.calc_distance('A-B-C'))
 #print(railroad.calc_distance('A-D'))
 #print(railroad.calc_distance('A-D-C'))

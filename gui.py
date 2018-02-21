@@ -71,6 +71,6 @@ class GraphicalInterface:
         button.pack(side = BOTTOM)
 
 
-root = Tk()
-gui = GraphicalInterface(root)
-root.mainloop()
+#root = Tk()
+#gui = GraphicalInterface(root)
+#root.mainloop()
