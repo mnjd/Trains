@@ -166,13 +166,8 @@ class Railroad:
         newlist = [e for e in all_distances if e<30]
         return len(newlist)
 
-railroad = Railroad()
-#root = Tk()
-#gui = GraphicalInterface(root)
-#root.mainloop()
-#string = gui.entry_user()
-
 if __name__ == "__main__":
+    railroad = Railroad()
     print(railroad.calc_distance('A-B-C'))
     print(railroad.calc_distance('A-D'))
     print(railroad.calc_distance('A-D-C'))
