@@ -1,5 +1,5 @@
-from gui import GraphicalInterface
-from tkinter import *
+#from gui import GraphicalInterface
+#from tkinter import *
 
 input_towns_string = 'AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7'
 
@@ -167,16 +167,19 @@ class Railroad:
         return len(newlist)
 
 railroad = Railroad()
-root = Tk()
-gui = GraphicalInterface(root)
-root.mainloop()
-#print(railroad.calc_distance('A-B-C'))
-#print(railroad.calc_distance('A-D'))
-#print(railroad.calc_distance('A-D-C'))
-#print(railroad.calc_distance('A-E-B-C-D'))
-#print(railroad.calc_distance('A-E-D'))
-#print(railroad.count_number_routes('C', 'C', 3, '<'))
-#print(railroad.count_number_routes('A', 'C', 4, '='))
-#print(railroad.shortest_route_display('A', 'C', 4, '<'))
-#print(railroad.shortest_route_display('B', 'B', 4, '<'))
-#print(railroad.number_different_routes('C', 'C', 10, '<'))
+#root = Tk()
+#gui = GraphicalInterface(root)
+#root.mainloop()
+#string = gui.entry_user()
+
+if __name__ == "__main__":
+    print(railroad.calc_distance('A-B-C'))
+    print(railroad.calc_distance('A-D'))
+    print(railroad.calc_distance('A-D-C'))
+    print(railroad.calc_distance('A-E-B-C-D'))
+    print(railroad.calc_distance('A-E-D'))
+    print(railroad.count_number_routes('C', 'C', 3, '<'))
+    print(railroad.count_number_routes('A', 'C', 4, '='))
+    print(railroad.shortest_route_display('A', 'C', 4, '<'))
+    print(railroad.shortest_route_display('B', 'B', 4, '<'))
+    print(railroad.number_different_routes('C', 'C', 10, '<'))
