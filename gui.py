@@ -38,18 +38,22 @@ class GraphicalInterface:
 
     def entry_fields(self):
         self.window = Toplevel(self.master)
-        label = Label(self.window, text="Enter route as: 'C', 'C', 3, '<'")
-        label.pack()
+        label_start = Label(self.window, text="Starting town")
+        label_start.grid(row=1, column=0)
         self.entry_start = Entry(self.window)
-        self.entry_start.pack()
+        self.entry_start.grid(row=1, column=2)
+        label_end = Label(self.window, text="Ending town")
+        label_end.grid(row=2, column=0)
         self.entry_end = Entry(self.window)
-        self.entry_end.pack()
+        self.entry_end.grid(row=2, column=2)
+        label_stops = Label(self.window, text="# of stops")
+        label_stops.grid(row=3, column=0)
         self.entry_number_stops = Entry(self.window)
-        self.entry_number_stops.pack()
+        self.entry_number_stops.grid(row=3, column=2)
         button_max_stops = Button(self.window, text='max stops (<)', command = self.max_stops_method)
-        button_max_stops.pack(side = LEFT)
+        button_max_stops.grid(row=4, column=0)
         button_finite_stops = Button(self.window, text='finite stops (=)', command = self.finite_stops_method)
-        button_finite_stops.pack(side = LEFT)
+        button_finite_stops.grid(row=4, column=2)
 
     def get_entry(self):
         self.string_start = self.entry_start.get()
@@ -100,17 +104,17 @@ class GraphicalInterface:
     def count_number_routes_window(self):
         self.entry_fields()
         button = Button(self.window, text='OK', command=self.show_count_number_routes)
-        button.pack(side = BOTTOM)
+        button.grid(row=5, column=1)
 
     def shortest_route_display_window(self):
         self.entry_fields()
         button = Button(self.window, text='OK', command=self.show_shortest_route_display)
-        button.pack(side = BOTTOM)
+        button.grid(row=5, column=1)
 
     def number_different_routes_window(self):
         self.entry_fields()
         button = Button(self.window, text='OK', command=self.show_number_different_routes)
-        button.pack(side = BOTTOM)
+        button.grid(row=5, column=1)
 
 
 root = Tk()
