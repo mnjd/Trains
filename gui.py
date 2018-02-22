@@ -1,6 +1,5 @@
 from tkinter import *
 from train import Railroad
-import sys
 
 class GraphicalInterface:
 
@@ -27,38 +26,61 @@ class GraphicalInterface:
         number_routes_length_button = Button(self.bottomframe, text="Number of routes having a length smaller than 30", command=self.number_different_routes_window)
         number_routes_length_button.pack(side = BOTTOM)
 
+    def check_entry(self):
+        if not self.string_start.isalpha():
+            raise Exception('Starting town should be a string')
+        if not self.string_end.isalpha():
+            raise Exception('Ending town should be a string')
+        if self.string_number_stops.isdigit():
+            self.string_number_stops = int(self.string_number_stops)
+        else:
+            raise Exception('Number of stops should be a number')
+
+    def entry_fields(self):
+        self.window = Toplevel(self.master)
+        label = Label(self.window, text="Enter route as: 'C', 'C', 3, '<'")
+        label.pack()
+        self.entry_start = Entry(self.window)
+        self.entry_start.pack()
+        self.entry_end = Entry(self.window)
+        self.entry_end.pack()
+        self.entry_number_stops = Entry(self.window)
+        self.entry_number_stops.pack()
+        button_max_stops = Button(self.window, text='max stops (<)', command = self.max_stops_method)
+        button_max_stops.pack(side = LEFT)
+        button_finite_stops = Button(self.window, text='finite stops (=)', command = self.finite_stops_method)
+        button_finite_stops.pack(side = LEFT)
+
+    def get_entry(self):
+        self.string_start = self.entry_start.get()
+        self.string_end = self.entry_end.get()
+        self.string_number_stops = self.entry_number_stops.get()
+        self.check_entry()
+        self.string_method = self.gui_method
+
     def show_calc_distance(self):
         self.string = self.entry.get()
         railroad = Railroad()
         print(railroad.calc_distance(self.string))
-        self.window.quit()
+        self.window.destroy()
 
     def show_count_number_routes(self):
-        self.string_start = self.entry_start.get()
-        self.string_end = self.entry_end.get()
-        self.string_number_stops = int(self.entry_number_stops.get())
-        self.string_method = self.gui_method
+        self.get_entry()
         railroad = Railroad()
         print(railroad.count_number_routes(self.string_start, self.string_end, self.string_number_stops, self.string_method))
-        self.window.quit()
+        self.window.destroy()
 
     def show_shortest_route_display(self):
-        self.string_start = self.entry_start.get()
-        self.string_end = self.entry_end.get()
-        self.string_number_stops = int(self.entry_number_stops.get())
-        self.string_method = self.gui_method
+        self.get_entry()
         railroad = Railroad()
         print(railroad.shortest_route_display(self.string_start, self.string_end, self.string_number_stops, self.string_method))
-        self.window.quit()
+        self.window.destroy()
 
     def show_number_different_routes(self):
-        self.string_start = self.entry_start.get()
-        self.string_end = self.entry_end.get()
-        self.string_number_stops = int(self.entry_number_stops.get())
-        self.string_method = self.gui_method
+        self.get_entry()
         railroad = Railroad()
         print(railroad.number_different_routes(self.string_start, self.string_end, self.string_number_stops, self.string_method))
-        self.window.quit()
+        self.window.destroy()
 
     def max_stops_method(self):
         self.gui_method = '<'
@@ -76,53 +98,17 @@ class GraphicalInterface:
         button.pack(side = BOTTOM)
 
     def count_number_routes_window(self):
-        self.window = Toplevel(self.master)
-        label = Label(self.window, text="Enter route as: 'C', 'C', 3, '<'")
-        label.pack()
-        self.entry_start = Entry(self.window)
-        self.entry_start.pack()
-        self.entry_end = Entry(self.window)
-        self.entry_end.pack()
-        self.entry_number_stops = Entry(self.window)
-        self.entry_number_stops.pack()
-        button_max_stops = Button(self.window, text='max stops (<)', command = self.max_stops_method)
-        button_max_stops.pack(side = LEFT)
-        button_finite_stops = Button(self.window, text='finite stops (=)', command = self.finite_stops_method)
-        button_finite_stops.pack(side = LEFT)
+        self.entry_fields()
         button = Button(self.window, text='OK', command=self.show_count_number_routes)
         button.pack(side = BOTTOM)
 
     def shortest_route_display_window(self):
-        self.window = Toplevel(self.master)
-        label = Label(self.window, text="Enter route: 'C', 'C', 3, '<'")
-        label.pack()
-        self.entry_start = Entry(self.window)
-        self.entry_start.pack()
-        self.entry_end = Entry(self.window)
-        self.entry_end.pack()
-        self.entry_number_stops = Entry(self.window)
-        self.entry_number_stops.pack()
-        button_max_stops = Button(self.window, text='max stops (<)', command = self.max_stops_method)
-        button_max_stops.pack(side = LEFT)
-        button_finite_stops = Button(self.window, text='finite stops (=)', command = self.finite_stops_method)
-        button_finite_stops.pack(side = LEFT)
+        self.entry_fields()
         button = Button(self.window, text='OK', command=self.show_shortest_route_display)
         button.pack(side = BOTTOM)
 
     def number_different_routes_window(self):
-        self.window = Toplevel(self.master)
-        label = Label(self.window, text="Enter route as: 'C', 'C', 3, '<'")
-        label.pack()
-        self.entry_start = Entry(self.window)
-        self.entry_start.pack()
-        self.entry_end = Entry(self.window)
-        self.entry_end.pack()
-        self.entry_number_stops = Entry(self.window)
-        self.entry_number_stops.pack()
-        button_max_stops = Button(self.window, text='max stops (<)', command = self.max_stops_method)
-        button_max_stops.pack(side = LEFT)
-        button_finite_stops = Button(self.window, text='finite stops (=)', command = self.finite_stops_method)
-        button_finite_stops.pack(side = LEFT)
+        self.entry_fields()
         button = Button(self.window, text='OK', command=self.show_number_different_routes)
         button.pack(side = BOTTOM)
 
