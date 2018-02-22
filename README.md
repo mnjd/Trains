@@ -2,11 +2,19 @@
 Training projects of AgilityFactory: trains
 
 ## Getting Started
-Download train.py and execute it: 
+Download train.py and gui.py and execute: 
+
+```
+python gui.py
+```
+
+to get the user interface or execute:
 
 ```
 python train.py
 ```
+
+if you do not require the graphical interface.
 
 ### Prerequisites
 python3.6 (2.7 should be fine)
@@ -17,6 +25,8 @@ pytest
 pip install pytest
 ```
 
+tkinter
+
 ### Running the tests
 To run tests, download test.py and execute: 
 
@@ -25,6 +35,8 @@ py.test test.py
 ```
 
 ### Inputs
+For the train.py code (without using the graphical interface gui.py):
+
 Create an instance of Railroad with for example: railroad = Railroad()
 
 To calculate distance between towns, evaluate: railroad.calc_distance('A-B-C'), if you want to calculate distance between town A and C going through B.
