@@ -34,6 +34,12 @@ To run tests, download test.py and execute:
 py.test test.py
 ```
 
+Or if you prefer unittest:
+
+```
+python testunit.py
+```
+
 ### Inputs
 For the train.py code (without using the graphical interface gui.py):
 
