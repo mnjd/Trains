@@ -2,19 +2,19 @@
 Training projects of AgilityFactory: trains
 
 ## Getting Started
-Download train.py and gui.py and execute: 
+Download train.py and gui.py.
+
+To work with the graphical interface, execute: 
 
 ```
 python gui.py
 ```
 
-to get the user interface or execute:
+If you do not require the graphical interface, execute:
 
 ```
 python train.py
 ```
-
-if you do not require the graphical interface.
 
 ### Prerequisites
 python3.6 (2.7 should be fine)
