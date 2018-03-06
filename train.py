@@ -1,5 +1,6 @@
 input_towns_string = 'AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7'
 
+
 class Railroad:
 
     def __init__(self):
@@ -32,7 +33,7 @@ class Railroad:
                         raise Exception('fist and second characters must be a letter')
                 elif not char.isdigit():
                     raise Exception('first and second characters should be letters and the following a number')
-    
+
     def build(self):
         '''
         Method that calls "construct_graph" to create the dictionary containing the graph.
@@ -50,10 +51,10 @@ class Railroad:
         # Town connected to starting one is added to graph
         if connected_towns_string[1]:
             self.routes_graph[connected_towns_string[0]][connected_towns_string[1]] = {}
-        # Distance between the 2 towns is added to the graph. 
+        # Distance between the 2 towns is added to the graph.
         if connected_towns_string[2]:
             self.routes_graph[connected_towns_string[0]][connected_towns_string[1]] = int(connected_towns_string[2:])
-            
+
     def calc_distance(self, input_route_string):
         '''
         Method to calculate distance between two towns.
@@ -134,7 +135,7 @@ class Railroad:
                 distance += self.routes_graph[f][g]
             # Save distances in a list
             all_distances += [distance]
-        # Sort distances 
+        # Sort distances
         all_distances.sort()
         # Shortest distance is the first one.
         shortest_distance = all_distances[0]
@@ -154,8 +155,9 @@ class Railroad:
                 distance += self.routes_graph[f][g]
             all_distances += [distance]
         # We use here the index correspondance between possible.routes and all_distances.
-        newlist = [e for e in all_distances if e<30]
+        newlist = [e for e in all_distances if e < 30]
         return len(newlist)
+
 
 if __name__ == "__main__":
     railroad = Railroad()
