@@ -11,11 +11,11 @@ class GraphicalInterface:
         '''
         self.master = master
         self.topframe = Frame(master)
-        self.topframe.pack(side = TOP)
+        self.topframe.pack(side=TOP)
         self.centerframe = Frame(master)
         self.centerframe.pack()
         self.bottomframe = Frame(master)
-        self.bottomframe.pack(side = BOTTOM)
+        self.bottomframe.pack(side=BOTTOM)
         self.buttons(master)
 
     def buttons(self, master):
@@ -23,16 +23,16 @@ class GraphicalInterface:
         Creating the main 4 buttons
         '''
         calc_distance_button = Button(self.topframe, text="Distance between 2 towns", command=self.calc_distance_window)
-        calc_distance_button.pack(side = LEFT)
+        calc_distance_button.pack(side=LEFT)
 
         count_number_routes_button = Button(self.topframe, text="Number of routes between 2 towns", command=self.count_number_routes_window)
-        count_number_routes_button.pack(side = LEFT)
+        count_number_routes_button.pack(side=LEFT)
 
         shortest_route_button = Button(self.centerframe, text="Shortest route between 2 towns", command=self.shortest_route_display_window)
-        shortest_route_button.pack(side = LEFT)
+        shortest_route_button.pack(side=LEFT)
 
         number_routes_length_button = Button(self.bottomframe, text="Number of routes having a length smaller than 30", command=self.number_different_routes_window)
-        number_routes_length_button.pack(side = BOTTOM)
+        number_routes_length_button.pack(side=BOTTOM)
         
     def calc_distance_window(self):
         '''
@@ -44,11 +44,11 @@ class GraphicalInterface:
         self.entry = Entry(self.window)
         self.entry.pack()
         button = Button(self.window, text='OK', command=self.show_calc_distance)
-        button.pack(side = BOTTOM)
+        button.pack(side=BOTTOM)
 
     def count_number_routes_window(self):
         '''
-        Method called when user wants to compute the number of 
+        Method called when user wants to compute the number of
         routes between two towns given the number of stops.
         '''
         self.entry_fields()
@@ -96,9 +96,9 @@ class GraphicalInterface:
         # to say whether one wants to make the trip
         # in less than a given number of stops
         # or exactly within a given number of stops
-        button_max_stops = Button(self.window, text='max stops (<)', command = self.max_stops_method)
+        button_max_stops = Button(self.window, text='max stops (<)', command=self.max_stops_method)
         button_max_stops.grid(row=4, column=0)
-        button_finite_stops = Button(self.window, text='finite stops (=)', command = self.finite_stops_method)
+        button_finite_stops = Button(self.window, text='finite stops (=)', command=self.finite_stops_method)
         button_finite_stops.grid(row=4, column=2)
 
     def max_stops_method(self):
